@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASL Recognition - Real-time</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤟 ASL Sign Language Recognition</h1>
+            <p>Real-time American Sign Language detection using AI</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Video Stream -->
+            <div class="video-section">
+                <div class="video-wrapper">
+                    <img src="{{ url_for('video_feed') }}" alt="Video Stream" id="videoStream">
+                </div>
+            </div>
+
+            <!-- Prediction Display -->
+            <div class="prediction-section">
+                <div class="prediction-card">
+                    <h2>Current Prediction</h2>
+                    <div class="prediction-display">
+                        <div class="letter" id="predictedLetter">-</div>
+                        <div class="confidence-wrapper">
+                            <span class="confidence-label">Confidence:</span>
+                            <div class="confidence-bar">
+                                <div class="confidence-fill" id="confidenceFill"></div>
+                            </div>
+                            <span class="confidence-value" id="confidenceValue">0%</span>
+                        </div>
+                    </div>
+                    <div class="status" id="status">
+                        <span class="status-indicator"></span>
+                        <span id="statusText">Waiting for hand...</span>
+                    </div>
+                </div>
+
+                <!-- Info Panel -->
+                <div class="info-panel">
+                    <h3>Instructions</h3>
+                    <ul>
+                        <li>Position your hand in front of the camera</li>
+                        <li>Make clear ASL letter signs</li>
+                        <li>Hold steady for best accuracy</li>
+                        <li>Ensure good lighting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Powered by TensorFlow & MediaPipe | FPS: <span id="fps">--</span></p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
